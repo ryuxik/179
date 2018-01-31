@@ -9,23 +9,19 @@
 #include <map>
 #include <vector>
 #include <string>
+#include <fstream>
 
 #include "Graph.hpp"
 #include "Search.hpp"
 
 int main (int argc, char* argv[])
 {
-    std::vector<Graph> graphs;
+    Graph g;
     std::vector<Search> searches;
-    for (int i=1; i<argc; i++) {
-        Graph g;
-        argv[i] >> g;
-        graphs.push_back(g);
-    }
-    for (auto const& g : graphs) {
-        Search s{g};
-        std::cout << s;
-    }
+    std::ifstream file(argv[1]);
+    file >> g;
+    Search s{g};
+    std::cout << s;
     return 0;
 }
 
