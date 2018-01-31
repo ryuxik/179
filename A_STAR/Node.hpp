@@ -24,6 +24,7 @@ class Node
         std::string parent;
         int pathLen;
     public:
+        Node() : name(NULL), heuristic(0), adjacency_list(NULL), parent(NULL), pathLen(0) {};
         Node(std::string Name, int Heuristic, std::vector<distances> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(NULL), pathLen(std::numeric_limits<int>::max()) {};
 
         std::string get_parent();
