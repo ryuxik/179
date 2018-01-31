@@ -11,5 +11,10 @@
 
 int main ()
 {
+	graph g;
+	something >> g;
+	search s{g};
+	std::cout s;
+	return 0;
 }
 
