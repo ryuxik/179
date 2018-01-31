@@ -21,7 +21,7 @@ std::ostream &operator<<(std::ostream &os, const Graph &g) {
 //S \n, name of node
 //H \n, heuristic
 //E \n, number of neighbors
-//e \n, for each one of E neighbors then 
+//e d \n, e name d distance for each one of E neighbors
 //}
 // first node is starting node
 // second node is ending node
