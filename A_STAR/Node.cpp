@@ -8,7 +8,7 @@
 
 #include "Node.hpp"
 
-std::vector<std::string> Node::get_neighbors() {
+std::vector<distances> Node::get_neighbors() {
     return this->adjacency_list;
 }
 
@@ -25,6 +25,10 @@ void Node::set_parent(std::string p) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Node &n) {
-	os << "Node: " << n.name << " has heuristic: " << n.heuristic << " and has neighbors: " << n.adjacency_list << std::endl;
+	os << "Node: " << n.name << " has heuristic: " << n.heuristic << " and has neighbors: "; 
+	for (auto const& edge: n.adjacency_list) {
+		os << edge.first; 
+	}
+	os << std::endl;
 	return os;
 }

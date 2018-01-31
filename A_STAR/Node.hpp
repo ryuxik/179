@@ -24,13 +24,12 @@ class Node
         std::string parent;
         int pathLen;
     public:
-        // `Node() : name(""), heuristic(0.0), adjacency_list(NULL), parent(NULL), pathLen(std::numeric_limits<int>::max()) {};
         Node(std::string Name, int Heuristic, std::vector<distances> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(NULL), pathLen(std::numeric_limits<int>::max()) {};
 
-        friend std::string get_parent();
-        friend void set_parent(std::string p);
-        friend std::vector<std::string> get_neighbors();
-        friend int get_heuristic();
+        std::string get_parent();
+        void set_parent(std::string p);
+        std::vector<distances> get_neighbors();
+        int get_heuristic();
         friend std::ostream &operator<<(std::ostream &os, const Node &n);
         friend class Graph;
         friend class nodeComparator;
