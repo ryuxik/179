@@ -6,20 +6,25 @@
 // Coypright Smols. All rights reserved.
 //
 
-#include "node.hpp"
+#include "Node.hpp"
 
-std::vector<node> node::get_neighbors() {
+std::vector<std::string> Node::get_neighbors() {
     return this->adjacency_list;
 }
 
-double node::get_heuristic() {
+int Node::get_heuristic() {
     return this->heuristic;
 }
 
-node* node::get_parent() {
+std::string Node::get_parent() {
     return this->parent;
 }
 
-void node::set_parent(*node p) {
+void Node::set_parent(std::string p) {
     this->parent = p;
+}
+
+std::ostream &operator<<(std::ostream &os, const Node &n) {
+	os << "Node: " << n.name << " has heuristic: " << n.heuristic << " and has neighbors: " << n.adjacency_list << std::endl;
+	return os;
 }
