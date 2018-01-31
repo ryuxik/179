@@ -11,6 +11,17 @@
 
 class graph 
 {
+  private:
+    node* start;
+    node* end;
+    std::vector<node> nodes;
+  public:
+    graph(node* start, node* end, std::vector<node> nodes) : start(start), end(end), nodes(nodes);
+
+    friend node* startNode();
+    friend node* endNode();
+    friend std::ostream &operator<<(std::ostream &os, const node &n);
+    friend std::istream &operator>>(std::istream &is, node &n);
 }
 
 #endif /* graph_hpp */
