@@ -17,8 +17,8 @@ class Search
         Search(Graph g) : g(g) {};
 
         friend std::ostream &operator<<(std::ostream &os, Search &s);
-        friend std::vector<std::string> execute(Graph g);
-        friend std::vector<std::string> get_path(Node n);
+        std::vector<std::string> execute(Graph g);
+        std::vector<std::string> get_path(Node n, std::map<std::string, Node> nodes);
 };
 
 #endif /* Search_hpp */

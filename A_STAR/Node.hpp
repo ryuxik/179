@@ -33,6 +33,8 @@ class Node
         friend std::ostream &operator<<(std::ostream &os, const Node &n);
         friend class Graph;
         friend class nodeComparator;
+        friend class Search;
+        friend bool operator<(const Node &lhs, const Node &rhs);
 };
 
 #endif /* Node_hpp */

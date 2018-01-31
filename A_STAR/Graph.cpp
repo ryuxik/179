@@ -7,6 +7,7 @@
 //
 
 #include "Graph.hpp"
+#include "Node.hpp"
 
 #include <map>
 #include <vector>
@@ -57,8 +58,9 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		if (i == 1) {
 			g.end = name;
 		}
-		
-		g.nodes[name] = Node(name, heuristic, neighbors);
+		Node n(name, heuristic, neighbors);
+		g.nodes.insert(std::pair<std::string, Node>(name, n));
+        //g.nodes[name] = n; 
 	}
 	return is;
 }

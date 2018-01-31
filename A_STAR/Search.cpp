@@ -8,6 +8,14 @@
 
 #include "Graph.hpp"
 #include "Node.hpp"
+#include "Search.hpp"
+
+#include <string>
+#include <map>
+#include <set>
+#include <vector>
+#include <iostream>
+#include <queue>
 
 class nodeComparator
 {
@@ -18,7 +26,11 @@ class nodeComparator
         }
 };
 
-std::vector<std::string> execute(Graph g)
+bool operator<(const Node& lhs, const Node& rhs) {
+    return lhs.heuristic < rhs.heuristic;
+}
+
+std::vector<std::string> Search::execute(Graph g)
 {
     std::string start = g.start;
     std::string end = g.end;
@@ -26,7 +38,7 @@ std::vector<std::string> execute(Graph g)
 
     std::set<Node> visited;
     std::set<Node> open;
-    std::priority_queue<Node, vector<Node>, nodeComparator> agenda;
+    std::priority_queue<Node, std::vector<Node>, nodeComparator> agenda;
 
     Node startNode = nodes[start];
     startNode.pathLen = 0;
@@ -38,12 +50,12 @@ std::vector<std::string> execute(Graph g)
     {
         Node current = agenda.top();
         if (current.name == end) {
-           return get_path(current);
+           return this->get_path(current, nodes);
         }
         agenda.pop();
         visited.insert(current);
-        std::vector<std::string> neighbors = current.adjacency_list;
-        for (auto pair : neighbors) {
+        std::vector<distances> neighbors = current.adjacency_list;
+        for (distances &pair : neighbors) {
             std::string nodeName = pair.first;
             int distFromCurrent = pair.second;
             Node n = nodes[nodeName];
@@ -55,7 +67,7 @@ std::vector<std::string> execute(Graph g)
             }
             int newPathLen = current.pathLen + distFromCurrent; 
             if (newPathLen >= n.pathLen + n.heuristic) {
-                continue
+                continue;
             }
             n.parent = current.name;
             n.pathLen = newPathLen;
@@ -63,7 +75,7 @@ std::vector<std::string> execute(Graph g)
     }
 }
 
-std::vector<std::string> get_path(Node n, std::map<std::string, Node> nodes) {
+std::vector<std::string> Search::get_path(Node n, std::map<std::string, Node> nodes) {
     std::vector<std::string> path;
     while (nodes.count(n.name)) {
         path.push_back(n.name);
@@ -74,7 +86,11 @@ std::vector<std::string> get_path(Node n, std::map<std::string, Node> nodes) {
 
 std::ostream &operator<<(std::ostream &os, Search &s)
 {
-    std::vector<std::string> path = execute(s.g);
-    os << path << std::endl; 
+    std::vector<std::string> path = s.execute(s.g);
+    for (auto s : path) {
+        os << s;
+    }
+    os << std::endl;
+    //os << path << std::endl; 
     return os;
 }
