@@ -12,9 +12,9 @@
 class nodeComparator
 {
     public:
-        int operator() (Node* n1, Node* n2)
+        int operator() (Node& n1, Node& n2)
         {
-            return (n1->pathLen + n1->heuristic) > (n2->pathLen + n2->heuristic);
+            return (n1.pathLen + n1.heuristic) > (n2.pathLen + n2.heuristic);
         }
 };
 
@@ -43,7 +43,9 @@ std::vector<std::string> execute(Graph g)
         agenda.pop();
         visited.insert(current);
         std::vector<std::string> neighbors = current.adjacency_list;
-        for (auto nodeName : neighbors) {
+        for (auto pair : neighbors) {
+            std::string nodeName = pair.first;
+            int distFromCurrent = pair.second;
             Node n = nodes[nodeName];
             if (visited.count(n)) {
                 continue;
@@ -51,7 +53,7 @@ std::vector<std::string> execute(Graph g)
             if (!open.count(n)) {
                 open.insert(n);
             }
-            int newPathLen = current.pathLen + /*TODO*/ current.distanceToNeighbor(n);
+            int newPathLen = current.pathLen + distFromCurrent; 
             if (newPathLen >= n.pathLen + n.heuristic) {
                 continue
             }
