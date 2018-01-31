@@ -71,3 +71,10 @@ std::vector<std::string> get_path(Node n, std::map<std::string, Node> nodes) {
     }
     return path;
 }
+
+std::ostream &operator<<(std::ostream &os, Search &s)
+{
+    std::vector<std::string> path = execute(s.g);
+    os << path << std::endl; 
+    return os;
+}
