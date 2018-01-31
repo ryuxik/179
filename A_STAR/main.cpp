@@ -20,7 +20,7 @@ int main (int argc, char* argv[])
     std::vector<Search> searches;
     std::ifstream file(argv[1]);
     file >> g;
-    Search s{g};
+    Search s(g);
     std::cout << s;
     return 0;
 }
