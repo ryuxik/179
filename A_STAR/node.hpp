@@ -18,7 +18,7 @@ class Node
         node* parent;
     public:
         Node() : name(""), heuristic(0.0), adjacency_list(std::vector<Node>), parent(NULL);
-        Node(std::string Name, double Heuristic, std::vector<Node> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list);
+        Node(std::string Name, double Heuristic, std::vector<Node> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(NULL);
 
         friend Node* get_parent();
         friend void set_parent(*node p);

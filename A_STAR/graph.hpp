@@ -12,16 +12,12 @@
 class Graph 
 {
     private:
-        Node* start;
-        Node* end;
-        std::vector<Node> nodes;
+        std::string start;
+        std::string end;
+        std::map<std::string, Node> nodes;
     public:
-        Graph(Node* start, Node* end, std::vector<Node> nodes) : start(start), end(end), nodes(nodes);
-
-        friend Node* start_node();
-        friend Node* end_node();
-        friend std::ostream &operator<<(std::ostream &os, const Node &n);
-        friend std::istream &operator>>(std::istream &is, Node &n);
+        friend std::ostream &operator<<(std::ostream &os, const Graph &g);
+        friend std::istream &operator>>(std::istream &is, Graph &g);
         friend class Search;
 }
 
