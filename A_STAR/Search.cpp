@@ -9,6 +9,8 @@
 #include "Graph.hpp"
 #include "Node.hpp"
 
+#include <set>
+
 class nodeComparator
 {
     public:
@@ -26,7 +28,7 @@ std::vector<std::string> execute(Graph g)
 
     std::set<Node> visited;
     std::set<Node> open;
-    std::priority_queue<Node, vector<Node>, nodeComparator> agenda;
+    std::priority_queue<Node, std::vector<Node>, nodeComparator> agenda;
 
     Node startNode = nodes[start];
     startNode.pathLen = 0;
@@ -54,8 +56,8 @@ std::vector<std::string> execute(Graph g)
                 open.insert(n);
             }
             int newPathLen = current.pathLen + distFromCurrent; 
-            if (newPathLen >= n.pathLen + n.heuristic) {
-                continue
+            if (newPathLen >= n.pathLen + n.get_heuristic()) {
+                continue;
             }
             n.parent = current.name;
             n.pathLen = newPathLen;
