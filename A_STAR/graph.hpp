@@ -11,18 +11,18 @@
 
 class Graph 
 {
-  private:
-    Node* start;
-    Node* end;
-    std::vector<Node> nodes;
-  public:
-    Graph(Node* start, Node* end, std::vector<Node> nodes) : start(start), end(end), nodes(nodes);
+    private:
+        Node* start;
+        Node* end;
+        std::vector<Node> nodes;
+    public:
+        Graph(Node* start, Node* end, std::vector<Node> nodes) : start(start), end(end), nodes(nodes);
 
-    friend Node* start_node();
-    friend Node* end_node();
-    friend std::ostream &operator<<(std::ostream &os, const Node &n);
-    friend std::istream &operator>>(std::istream &is, Node &n);
-    friend class Search;
+        friend Node* start_node();
+        friend Node* end_node();
+        friend std::ostream &operator<<(std::ostream &os, const Node &n);
+        friend std::istream &operator>>(std::istream &is, Node &n);
+        friend class Search;
 }
 
 #endif /* Graph_hpp */

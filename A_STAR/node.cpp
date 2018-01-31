@@ -9,17 +9,17 @@
 #include "node.hpp"
 
 std::vector<node> node::get_neighbors() {
-  return this->adjacency_list;
+    return this->adjacency_list;
 }
 
 double node::get_heuristic() {
-  return this->heuristic;
+    return this->heuristic;
 }
 
 node* node::get_parent() {
-  return this->parent;
+    return this->parent;
 }
 
 void node::set_parent(*node p) {
-  this->parent = p;
+    this->parent = p;
 }

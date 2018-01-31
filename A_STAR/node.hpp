@@ -26,7 +26,7 @@ class Node
 		friend double get_heuristic();
 		friend std::ostream &operator<<(std::ostream &os, const Node &n);
 		friend std::istream &operator>>(std::istream &is, Node &n);
-    friend class Graph;
+        friend class Graph;
 }
 
 #endif /* Node_hpp */
