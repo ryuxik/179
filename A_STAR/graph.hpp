@@ -18,8 +18,8 @@ class graph
   public:
     graph(node* start, node* end, std::vector<node> nodes) : start(start), end(end), nodes(nodes);
 
-    friend node* startNode();
-    friend node* endNode();
+    friend node* start_node();
+    friend node* end_node();
     friend std::ostream &operator<<(std::ostream &os, const node &n);
     friend std::istream &operator>>(std::istream &is, node &n);
 }
