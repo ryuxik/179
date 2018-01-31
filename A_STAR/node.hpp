@@ -9,6 +9,10 @@
 #ifndef Node_hpp
 #define Node_hpp
 
+#include <vector>
+#include <string>
+#include <iostream>
+
 typedef std::pair<std::string, int> distances; 
 
 class Node

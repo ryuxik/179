@@ -6,8 +6,8 @@
 // Copyright 2018 Smols. All rights reserved.
 //
 
-#include "graph.hpp"
-#include "node.hpp"
+#include "Graph.hpp"
+#include "Node.hpp"
 
 class nodeComparator
 {
