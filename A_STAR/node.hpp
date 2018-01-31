@@ -9,12 +9,14 @@
 #ifndef Node_hpp
 #define Node_hpp
 
+typdedef std::pair<std::string, int> distances; 
+
 class Node
 {
     private:
         std::string name;
         int heuristic;
-        std::vector<std::string> adjacency_list;
+        std::vector<distances> adjacency_list;
         std::string parent;
         int pathLen;
     public:

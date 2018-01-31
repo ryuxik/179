@@ -40,11 +40,13 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		myFile >> heuristic;
 		int E;
 		myFile >> E;
-		std::vector<String> neighbors;
+		std::vector<distances> neighbors;
 		for (int j = 0; j < E; j++) {
 			std:string neighbor;
+			int distance;
 			myFile >> neighbor;
-			neighbors.push_back(neighbor);
+			myFile >> distance;
+			neighbors.push_back(distances(neighbor, distance));
 		}
 		if (i == 0) {
 			g.start = name;
