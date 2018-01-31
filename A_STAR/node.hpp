@@ -1,32 +1,33 @@
 //
-// node.hpp
+// Node.hpp
 // A_STAR
 //
 // Created by Reb and Santi on 1/30/18
 // Copyright 2018 Smol. All rights reserved.
 //
 
-#ifndef node_hpp
-#define node_hpp
+#ifndef Node_hpp
+#define Node_hpp
 
-class node
+class Node
 {
 	private:
 		std::string name;
 		double heuristic;
-		std::vector<node> adjacency_list;
+		std::vector<Node> adjacency_list;
 		node* parent;
 	public:
-		node() : name(""), heuristic(0.0), adjacency_list(std::vector<node>), parent(NULL);
-		node(std::string Name, double Heuristic, std::vector<node> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list);
+		Node() : name(""), heuristic(0.0), adjacency_list(std::vector<Node>), parent(NULL);
+		Node(std::string Name, double Heuristic, std::vector<Node> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list);
 
-		friend node* getParent();
-		friend void setParent();
-		friend std::vector<node> get_neighbors();
+		friend Node* get_parent();
+		friend void set_parent(*node p);
+		friend std::vector<Node> get_neighbors();
 		friend double get_heuristic();
-		friend std::ostream &operator<<(std::ostream &os, const node &n);
-		friend std::istream &operator>>(std::istream &is, node &n);
+		friend std::ostream &operator<<(std::ostream &os, const Node &n);
+		friend std::istream &operator>>(std::istream &is, Node &n);
+    friend class Graph;
 }
 
-#endif /* node_hpp */
+#endif /* Node_hpp */
 

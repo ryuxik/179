@@ -1,28 +1,29 @@
 //
-// graph.hpp
+// Graph.hpp
 // A_STAR
 //
 // Created by Reb and Santi on 1/30/18
 // Copyright 2018 Smols. All rights reserved.
 //
 
-#ifndef graph_hpp
-#define graph_hpp
+#ifndef Graph_hpp
+#define Graph_hpp
 
-class graph 
+class Graph 
 {
   private:
-    node* start;
-    node* end;
-    std::vector<node> nodes;
+    Node* start;
+    Node* end;
+    std::vector<Node> nodes;
   public:
-    graph(node* start, node* end, std::vector<node> nodes) : start(start), end(end), nodes(nodes);
+    Graph(Node* start, Node* end, std::vector<Node> nodes) : start(start), end(end), nodes(nodes);
 
-    friend node* start_node();
-    friend node* end_node();
-    friend std::ostream &operator<<(std::ostream &os, const node &n);
-    friend std::istream &operator>>(std::istream &is, node &n);
+    friend Node* start_node();
+    friend Node* end_node();
+    friend std::ostream &operator<<(std::ostream &os, const Node &n);
+    friend std::istream &operator>>(std::istream &is, Node &n);
+    friend class Search;
 }
 
-#endif /* graph_hpp */
+#endif /* Graph_hpp */
 

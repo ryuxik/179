@@ -9,12 +9,17 @@
 #include "graph.hpp"
 #include "search.hpp"
 
-int main ()
+int main (int argc, char* argv[])
 {
-	graph g;
-	something >> g;
-	search s{g};
-	std::cout s;
+  std::vector graphs<Graph>;
+  std::vector searches<Search>;
+  for (int i=1; i<argc; i++) {
+    Graph g;
+    Graph g << argv[i];
+    graphs.push_back(g);
+  }
+	Search s{g};
+	std::cout << s;
 	return 0;
 }
 
