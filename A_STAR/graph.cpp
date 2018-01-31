@@ -27,25 +27,21 @@ std::ostream &operator<<(std::ostream &os, const Graph &g) {
 // second node is ending node
 std::istream &operator>>(std::istream &is, Graph &g)
 {	
-	std::ifstream myFile;
-	std::string filename;
-	is >> filename;
-	myFile.open(filename);
 	std::vector<Node> all_nodes;
 	int N;
 	for (int i = 0; i < N, i++) {
 		std::string name;
-		myFile >> name;
+		is >> name;
 		int heuristic;
-		myFile >> heuristic;
+		is >> heuristic;
 		int E;
-		myFile >> E;
+		is >> E;
 		std::vector<distances> neighbors;
 		for (int j = 0; j < E; j++) {
 			std:string neighbor;
 			int distance;
-			myFile >> neighbor;
-			myFile >> distance;
+			is >> neighbor;
+			is >> distance;
 			neighbors.push_back(distances(neighbor, distance));
 		}
 		if (i == 0) {
@@ -57,6 +53,5 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		
 		g.nodes[name] = Node(name, heuristic, neighbors);
 	}
-	myFile.close();
 	return is;
 }
