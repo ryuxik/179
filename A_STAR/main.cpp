@@ -20,6 +20,6 @@ int main (int argc, char* argv[])
     }
     Search s{g};
     std::cout << s;
-	return 0;
+    return 0;
 }
 
