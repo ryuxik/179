@@ -9,7 +9,7 @@
 #ifndef Node_hpp
 #define Node_hpp
 
-typdedef std::pair<std::string, int> distances; 
+typedef std::pair<std::string, int> distances; 
 
 class Node
 {
@@ -20,8 +20,8 @@ class Node
         std::string parent;
         int pathLen;
     public:
-        Node() : name(""), heuristic(0.0), adjacency_list(std::vector<Node>), parent(NULL), pathLen(std::numeric_limits<int>::max());
-        Node(std::string Name, int Heuristic, std::vector<std::string> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(NULL), pathLen(std::numeric_limits<int>::max());
+        // `Node() : name(""), heuristic(0.0), adjacency_list(NULL), parent(NULL), pathLen(std::numeric_limits<int>::max()) {};
+        Node(std::string Name, int Heuristic, std::vector<distances> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(NULL), pathLen(std::numeric_limits<int>::max()) {};
 
         friend std::string get_parent();
         friend void set_parent(std::string p);
@@ -30,7 +30,7 @@ class Node
         friend std::ostream &operator<<(std::ostream &os, const Node &n);
         friend class Graph;
         friend class nodeComparator;
-}
+};
 
 #endif /* Node_hpp */
 

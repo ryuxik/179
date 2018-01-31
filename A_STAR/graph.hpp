@@ -9,6 +9,8 @@
 #ifndef Graph_hpp
 #define Graph_hpp
 
+#include "Node.hpp"
+
 class Graph 
 {
     private:
@@ -19,7 +21,7 @@ class Graph
         friend std::ostream &operator<<(std::ostream &os, const Graph &g);
         friend std::istream &operator>>(std::istream &is, Graph &g);
         friend class Search;
-}
+};
 
 #endif /* Graph_hpp */
 
