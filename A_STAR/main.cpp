@@ -6,20 +6,22 @@
 // Copyright 2018 Smols. All rights reserved.
 //
 
-#include "graph.hpp"
-#include "search.hpp"
+#include "Graph.hpp"
+#include "Search.hpp"
 
 int main (int argc, char* argv[])
 {
-    std::vector graphs<Graph>;
-    std::vector searches<Search>;
+    std::vector<Graph> graphs;
+    std::vector<Search> searches;
     for (int i=1; i<argc; i++) {
         Graph g;
         Graph g << argv[i];
         graphs.push_back(g);
     }
-    Search s{g};
-    std::cout << s;
+    for (auto const& g : graphs) {
+        Search s{g};
+        std::cout << s;
+    }
     return 0;
 }
 
