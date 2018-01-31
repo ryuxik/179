@@ -8,11 +8,17 @@
 
 #include "Graph.hpp"
 
+#include <map>
+#include <vector>
+#include <string>
+#include <iostream>
+
 std::ostream &operator<<(std::ostream &os, const Graph &g) {
 	os << "This graph has nodes:" << std::endl;
 	for (auto const& entry: g.nodes) {
 		os << "\t" << entry.second << std::endl;
 	}
+    return os;
 }
 
 //istream format
@@ -29,7 +35,8 @@ std::istream &operator>>(std::istream &is, Graph &g)
 {	
 	std::vector<Node> all_nodes;
 	int N;
-	for (int i = 0; i < N, i++) {
+	is >> N;
+    for (int i = 0; i < N; i++) {
 		std::string name;
 		is >> name;
 		int heuristic;
@@ -38,7 +45,7 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		is >> E;
 		std::vector<distances> neighbors;
 		for (int j = 0; j < E; j++) {
-			std:string neighbor;
+			std::string neighbor;
 			int distance;
 			is >> neighbor;
 			is >> distance;

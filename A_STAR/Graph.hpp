@@ -10,6 +10,9 @@
 #define Graph_hpp
 
 #include "Node.hpp"
+#include <string>
+#include <iostream>
+#include <map>
 
 class Graph 
 {
