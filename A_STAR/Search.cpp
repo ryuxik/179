@@ -79,9 +79,9 @@ std::vector<std::string> Search::execute(Graph g)
             std::cout << "\t\tthis is not a better path than " << n.pathLen <<" plus "<<n.heuristic << std::endl;
                 continue;
             }
-            parents[nodeName] = current.name;
             n.pathLen = newPathLen;
             if (!open.count(nodeName)) {
+                parents[nodeName] = current.name;
                 std::cout << "\t\tadding " << nodeName << " to agenda" <<std::endl;
                 open.insert(nodeName);
                 agenda.push(n);
