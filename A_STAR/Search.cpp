@@ -39,15 +39,15 @@ std::vector<std::string> Search::execute(Graph g)
     std::map<std::string, Node> nodes = g.nodes;
 
     std::map<std::string, std::string> parents;
-    std::set<Node> visited;
-    std::set<Node> open;
+    std::set<std::string> visited;
+    std::set<std::string> open;
     std::priority_queue<Node, std::vector<Node>, nodeComparator> agenda;
 
     parents.insert(std::pair<std::string, std::string>(start, "NONE"));
     Node startNode = nodes[start];
     startNode.pathLen = 0;
     agenda.push(startNode);
-    open.insert(startNode);
+    open.insert(start);
 
     while(agenda.empty() == false)
     {
@@ -58,30 +58,31 @@ std::vector<std::string> Search::execute(Graph g)
             return this->get_path(end, parents);
         }
         agenda.pop();
-        open.erase(current);
-        visited.insert(current);
+        open.erase(current.name);
+        std::cout << "---------- adding "+current.name+" to visited ----------" << std::endl;
+        visited.insert(current.name);
         std::vector<distances> neighbors = current.adjacency_list;
         for (distances &pair : neighbors) {
             std::string nodeName = pair.first;
             int distFromCurrent = pair.second;
-            std::cout << "\tneighbor " << nodeName << distFromCurrent << std::endl; 
+            std::cout << "\tneighbor " << nodeName << "->" << distFromCurrent << std::endl; 
             //std::cout << "neighbor " << nodeName << " w/ distance " << distFromCurrent << std::endl;
             Node n = nodes[nodeName];
-            if (visited.count(n)) {
-                std::cout << "node " << nodeName << " already visited" <<std::endl;
+            if (visited.count(nodeName)) {
+                std::cout << "\tnode " << nodeName << " already visited" <<std::endl;
                 continue;
             }
             int newPathLen = current.pathLen + distFromCurrent; 
             std::cout << "\t\tnew path len " << newPathLen << std::endl;
             if (newPathLen >= n.pathLen + n.heuristic) {
-            std::cout << "\t\tthis is not a better path than " << n.pathLen+n.heuristic << std::endl;
+            std::cout << "\t\tthis is not a better path than " << n.pathLen <<" plus "<<n.heuristic << std::endl;
                 continue;
             }
             parents[nodeName] = current.name;
             n.pathLen = newPathLen;
-            if (!open.count(n)) {
-                std::cout << "adding " << nodeName << " to agenda" <<std::endl;
-                open.insert(n);
+            if (!open.count(nodeName)) {
+                std::cout << "\t\tadding " << nodeName << " to agenda" <<std::endl;
+                open.insert(nodeName);
                 agenda.push(n);
             }
         }

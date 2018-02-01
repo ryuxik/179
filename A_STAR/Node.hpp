@@ -24,8 +24,8 @@ class Node
         std::string parent;
         int pathLen;
     public:
-        Node() : name(""), heuristic(0), adjacency_list(std::vector<distances>()), parent(""), pathLen(std::numeric_limits<int>::max()) {};
-        Node(std::string Name, int Heuristic, std::vector<distances> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(""), pathLen(std::numeric_limits<int>::max()) {};
+        Node() : name(""), heuristic(0), adjacency_list(std::vector<distances>()), parent(""), pathLen(9999) {};
+        Node(std::string Name, int Heuristic, std::vector<distances> Adjacency_list) : name(Name), heuristic(Heuristic), adjacency_list(Adjacency_list), parent(""), pathLen(9999){};
 
         std::string get_parent();
         void set_parent(std::string p);
