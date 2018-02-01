@@ -48,14 +48,14 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		is >> heuristic;
 		int E;
 		is >> E;
-        //std::cout << "Name of node " << i+1 << " is " << name << " with heuristic " << heuristic << " and " << E << " neighbors!" << std::endl; 
+        std::cout << "node " << name << " / heuristic " << heuristic << " / " << E << " neighbors" << std::endl; 
 		std::vector<distances> neighbors;
 		for (int j = 0; j < E; j++) {
 			std::string neighbor;
 			int distance;
 			is >> neighbor;
 			is >> distance;
-            //std::cout << "Neighbor " << j+1 << " for node " << i+1 << " is named " << neighbor << " and is " << distance << " distance away!" << std::endl;
+            std::cout << name << "->" << neighbor << ", " << distance << std::endl;
             neighbors.push_back(distances(neighbor, distance));
 		}
 		if (i == 0) {
@@ -66,7 +66,7 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		}
         Node n(name, heuristic, neighbors);
         g.nodes.insert(std::pair<std::string, Node>(name, n));
-        //std::cout<<"end of for loop"<<std::endl;
+        std::cout<<"---------"<<std::endl;
 	}
 	return is;
 }
