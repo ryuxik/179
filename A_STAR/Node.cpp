@@ -25,9 +25,10 @@ void Node::set_parent(std::string p) {
 }
 
 std::ostream &operator<<(std::ostream &os, const Node &n) {
-	os << "Node: " << n.name << " has heuristic: " << n.heuristic << " and parent "<< n.parent <<  " and has neighbors: "; 
+	os << std::cout << "node " << n.name << " / heuristic " << n.heuristic << " / " << sizeof(n.adjacency_list) << " neighbors" << std::endl;  
 	for (auto const& edge: n.adjacency_list) {
-		os << edge.first; 
+		os << n.name << "->" << edge.first << ", " << edge.second << std::endl;
+		os<<"---------"<<std::endl;
 	}
 	os << std::endl;
 	return os;

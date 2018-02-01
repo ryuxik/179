@@ -16,6 +16,7 @@
 #include <vector>
 #include <iostream>
 #include <queue>
+#include <algorithm>
 
 #include <set>
 
@@ -101,6 +102,7 @@ std::vector<std::string> Search::get_path(std::string endNode, std::map<std::str
         path.push_back(parents[current]);
         current = parents[current];
     }
+    std::reverse(path.begin(), path.end());
     return path;
 }
 
