@@ -52,6 +52,7 @@ std::vector<std::string> Search::execute(Graph g)
     while(agenda.empty() == false)
     {
         Node current = agenda.top();
+        std::cout << "current " << current.name << std::endl;
         if (current.name == end) {
             std::cout << "path len: " << current.pathLen << std::endl;
             return this->get_path(end, parents);
@@ -63,20 +64,23 @@ std::vector<std::string> Search::execute(Graph g)
         for (distances &pair : neighbors) {
             std::string nodeName = pair.first;
             int distFromCurrent = pair.second;
+            std::cout << "\tneighbor " << nodeName << distFromCurrent << std::endl; 
             //std::cout << "neighbor " << nodeName << " w/ distance " << distFromCurrent << std::endl;
             Node n = nodes[nodeName];
             if (visited.count(n)) {
-                //std::cout << "node " << nodeName << " already visited" <<std::endl;
+                std::cout << "node " << nodeName << " already visited" <<std::endl;
                 continue;
             }
             int newPathLen = current.pathLen + distFromCurrent; 
+            std::cout << "\t\tnew path len " << newPathLen << std::endl;
             if (newPathLen >= n.pathLen + n.heuristic) {
-                //std::cout << "worse path found";
+            std::cout << "\t\tthis is not a better path than " << n.pathLen+n.heuristic << std::endl;
                 continue;
             }
             parents[nodeName] = current.name;
             n.pathLen = newPathLen;
             if (!open.count(n)) {
+                std::cout << "adding " << nodeName << " to agenda" <<std::endl;
                 open.insert(n);
                 agenda.push(n);
             }
