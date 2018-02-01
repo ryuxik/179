@@ -16,7 +16,6 @@
 #include <vector>
 #include <iostream>
 #include <queue>
-#include <algorithm>
 
 #include <set>
 
@@ -79,7 +78,9 @@ std::vector<std::string> Search::execute(Graph g)
             std::cout << "\t\tthis is not a better path than " << n.pathLen <<" plus "<<n.heuristic << std::endl;
                 continue;
             }
+            std::cout << "\t\tsetting " << nodeName << "'s parent to "<< current.name;
             parents[nodeName] = current.name;
+            std::cout << "\t\t" << nodeName <<"'s parent is now " << parents[nodeName] <<std::endl;
             n.pathLen = newPathLen;
             if (!open.count(nodeName)) {
                 std::cout << "\t\tadding " << nodeName << " to agenda" <<std::endl;
@@ -102,7 +103,6 @@ std::vector<std::string> Search::get_path(std::string endNode, std::map<std::str
         path.push_back(parents[current]);
         current = parents[current];
     }
-    std::reverse(path.begin(), path.end());
     return path;
 }
 
