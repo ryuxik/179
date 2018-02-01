@@ -1,5 +1,5 @@
 2
-start_node
+start
 1
 1
 end

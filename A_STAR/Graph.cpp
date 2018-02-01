@@ -28,7 +28,10 @@ std::ostream &operator<<(std::ostream &os, const Graph &g) {
 //S \n, name of node
 //H \n, heuristic
 //E \n, number of neighbors
-//e d \n, e name d distance for each one of E neighbors
+//  for each neighbor {
+//    e \n, name of neighbor
+//    d \n, distance for neighbors
+//  }
 //}
 // first node is starting node
 // second node is ending node
@@ -37,6 +40,7 @@ std::istream &operator>>(std::istream &is, Graph &g)
 	std::vector<Node> all_nodes;
 	int N;
 	is >> N;
+    //std::cout << N << std::endl;
     for (int i = 0; i < N; i++) {
 		std::string name;
 		is >> name;
@@ -44,13 +48,15 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		is >> heuristic;
 		int E;
 		is >> E;
+        //std::cout << "Name of node " << i+1 << " is " << name << " with heuristic " << heuristic << " and " << E << " neighbors!" << std::endl; 
 		std::vector<distances> neighbors;
 		for (int j = 0; j < E; j++) {
 			std::string neighbor;
 			int distance;
 			is >> neighbor;
 			is >> distance;
-			neighbors.push_back(distances(neighbor, distance));
+            //std::cout << "Neighbor " << j+1 << " for node " << i+1 << " is named " << neighbor << " and is " << distance << " distance away!" << std::endl;
+            neighbors.push_back(distances(neighbor, distance));
 		}
 		if (i == 0) {
 			g.start = name;
@@ -58,9 +64,9 @@ std::istream &operator>>(std::istream &is, Graph &g)
 		if (i == 1) {
 			g.end = name;
 		}
-		Node n(name, heuristic, neighbors);
-		g.nodes.insert(std::pair<std::string, Node>(name, n));
-        //g.nodes[name] = n; 
+        Node n(name, heuristic, neighbors);
+        g.nodes.insert(std::pair<std::string, Node>(name, n));
+        //std::cout<<"end of for loop"<<std::endl;
 	}
 	return is;
 }
