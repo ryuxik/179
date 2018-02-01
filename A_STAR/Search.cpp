@@ -101,7 +101,11 @@ std::vector<std::string> Search::get_path(std::string endNode, std::map<std::str
         path.push_back(parents[current]);
         current = parents[current];
     }
-    return path;
+    std::vector<std::string> reverse;
+    for (auto const& spot: path) {
+        reverse.push_back(spot);
+    }
+    return reverse;
 }
 
 
