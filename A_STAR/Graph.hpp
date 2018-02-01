@@ -18,12 +18,14 @@ class Graph
 {
     private:
         std::string start;
-        std::string end;
         std::map<std::string, Node> nodes;
     public:
+        std::string end;
         friend std::ostream &operator<<(std::ostream &os, const Graph &g);
         friend std::istream &operator>>(std::istream &is, Graph &g);
         friend class Search;
+        //friend std::ostream &operator<<(std::ostream &os, Search &s);
+    
 };
 
 #endif /* Graph_hpp */
